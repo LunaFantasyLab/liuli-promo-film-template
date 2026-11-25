@@ -1,0 +1,8 @@
+out/
+film/assets/gsap.min.js
+*.mp4
+*.mov
+*.wav
+*.mp3
+__pycache__/
+.DS_Store

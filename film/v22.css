@@ -1,0 +1,36 @@
+/* v22 (2026-11-24) — TANCO's five edits on top of v21. Everything else is the original. */
+
+/* 2. 小窗播放: cover a touch lower (now vertically centred: 20px top / 20px bottom inside the 144px window),
+      control row lowered so the bottom of the play button = bottom of the cover; time + exit sit on that row. */
+#mini-window .mini-cover { margin-top: 6px !important; }
+#mini-window .mini-controls { margin-top: 18.633px !important; }
+
+/* 3. 49s brand lock: 「琉 璃」 a bit smaller with a space between the characters; logo scaled by the same ratio. */
+#v20-promo .vp-brand-lock img {
+  width: 116px !important;
+  height: 116px !important;
+  border-radius: 27.3px !important;
+  margin-bottom: 15.4px !important;
+  box-shadow: 0 22px 61px rgba(255, 76, 18, 0.46) !important;
+}
+#v20-promo .vp-brand-lock b {
+  font-size: 80px !important;
+  -webkit-text-stroke: 1.53px #FFFFFF !important;
+  text-shadow: 0 15px 46px rgba(255, 92, 32, 0.32) !important;
+  white-space: pre !important;
+}
+
+/* 5. Minuet album overlays (hidden unless the swap is active) */
+.v22-minuet-art, .v22-minuet-ref, #v22-now-cover-minuet { display: none; }
+html.v22-minuet-on #cover-5 .cover-art:not(.v22-minuet-art) { display: none !important; }
+html.v22-minuet-on #cover-5 .v22-minuet-art { display: block !important; }
+html.v22-minuet-on #cover-5 .reflection img:not(.v22-minuet-ref) { display: none !important; }
+html.v22-minuet-on #cover-5 .v22-minuet-ref { display: block !important; }
+#v22-now-cover-minuet { width: 38px; height: 38px; object-fit: cover; border-radius: 8px; border: .5px solid #ffffff30; flex-shrink: 0; }
+html.v22-now-minuet #now-cover { display: none !important; }
+html.v22-now-minuet #v22-now-cover-minuet { display: block !important; }
+
+/* 4. Finale theme show: replica of the app's AmbientBackground inside the window */
+#v22-amb { position: absolute; inset: 0; z-index: 0; display: none; pointer-events: none; overflow: hidden; }
+#v22-amb .v22-base, #v22-amb .v22-shade, #v22-amb .v22-vig { position: absolute; inset: 0; }
+#v22-amb i { position: absolute; display: block; border-radius: 50%; }

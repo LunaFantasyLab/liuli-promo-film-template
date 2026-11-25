@@ -1,0 +1,392 @@
+{
+  "source": "PlayerCore/Theme.swift",
+  "userSpelling": "朱清",
+  "verifiedFinalTheme": "朱青",
+  "verifiedFinalRawValue": "zhuqing",
+  "sourceCount": 19,
+  "themes": [
+    {
+      "id": "system",
+      "name": "默认（跟随系统）",
+      "palette": [
+        "E6E7EB",
+        "EFF0F3",
+        "FAFAFC",
+        "FFFFFF",
+        "2C2C30"
+      ],
+      "kind": "resolved-system-light"
+    },
+    {
+      "id": "white",
+      "name": "白",
+      "palette": [
+        "E6E7EB",
+        "EFF0F3",
+        "FAFAFC",
+        "FFFFFF",
+        "2C2C30"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "black",
+      "name": "黑",
+      "palette": [
+        "121214",
+        "1E1F22",
+        "34363B",
+        "9A9BA1",
+        "F0F0F2"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "followCover",
+      "name": "跟随封面",
+      "palette": null,
+      "kind": "derived-from-cover"
+    },
+    {
+      "id": "midnight",
+      "name": "纯黑夜间",
+      "palette": [
+        "000000",
+        "0B0B0F",
+        "17171D",
+        "9A9AA8",
+        "D8D8E4"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "mistViolet",
+      "name": "雾紫",
+      "palette": [
+        "2C2846",
+        "544C86",
+        "9184C0",
+        "C9C2EA",
+        "C6BAFA"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "celadon",
+      "name": "青瓷",
+      "palette": [
+        "1F3532",
+        "3E6560",
+        "86AFA6",
+        "C4DDD6",
+        "A9D9CC"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "duskAmber",
+      "name": "暮橙",
+      "palette": [
+        "3A2622",
+        "7A4E3E",
+        "C49278",
+        "EBD0C0",
+        "F0B795"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "deepSea",
+      "name": "深海",
+      "palette": [
+        "0F1E30",
+        "23466A",
+        "5F8FB6",
+        "B6CDE2",
+        "9CC6EC"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "sakura",
+      "name": "樱粉",
+      "palette": [
+        "3A2730",
+        "7A5262",
+        "C7A0AE",
+        "EED7DE",
+        "F2B9CB"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "moss",
+      "name": "苔绿",
+      "palette": [
+        "1E2A1E",
+        "45583E",
+        "93A784",
+        "D0DCC4",
+        "C2D9A6"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "sandGold",
+      "name": "沙金",
+      "palette": [
+        "302A20",
+        "6A5C42",
+        "B9A47C",
+        "E8DCC2",
+        "E9CF97"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "moonGrey",
+      "name": "月白",
+      "palette": [
+        "2A2E36",
+        "575F6E",
+        "A3ACBC",
+        "DDE2EA",
+        "E2E8F4"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "inkBlue",
+      "name": "黛蓝",
+      "palette": [
+        "1A2133",
+        "384765",
+        "7887A8",
+        "C3CBDE",
+        "A8B8E6"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "rouge",
+      "name": "胭脂",
+      "palette": [
+        "341C24",
+        "6E3A48",
+        "B27886",
+        "E7CBD2",
+        "EDA3B4"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "aurora",
+      "name": "极光",
+      "palette": [
+        "0F2226",
+        "1F5452",
+        "5FA89A",
+        "BFE3DA",
+        "8EE6CF"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "smoke",
+      "name": "烟岚",
+      "palette": [
+        "26282A",
+        "4E5254",
+        "969B9D",
+        "D6D9DA",
+        "D2D8DC"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "liuli",
+      "name": "琉璃",
+      "palette": [
+        "1C223B",
+        "3B4160",
+        "2775B6",
+        "EEF7F2",
+        "EBB10D"
+      ],
+      "kind": "fixed"
+    },
+    {
+      "id": "zhuqing",
+      "name": "朱青",
+      "palette": [
+        "065279",
+        "177CB0",
+        "C3272B",
+        "D6ECF0",
+        "FF2121"
+      ],
+      "kind": "fixed"
+    }
+  ],
+  "coverPalettes": [
+    [
+      "45416B",
+      "43426C",
+      "6F7099",
+      "B5B4CE",
+      "B3B0EA"
+    ],
+    [
+      "464848",
+      "757472",
+      "717577",
+      "B6B7B8",
+      "BAB7B2"
+    ],
+    [
+      "304A64",
+      "587A8C",
+      "5F778E",
+      "ACB9C7",
+      "9EBBDA"
+    ],
+    [
+      "603D3E",
+      "946955",
+      "8F6A64",
+      "C5B2B2",
+      "DAAC96"
+    ],
+    [
+      "593642",
+      "8E6168",
+      "91686F",
+      "C5B1B7",
+      "DAA8B0"
+    ],
+    [
+      "544530",
+      "817258",
+      "AC9C7F",
+      "BEB6AB",
+      "C6B598"
+    ]
+  ],
+  "coverPaletteMethod": "Port of actual Color.swift 48×48 deterministic OKLab KMeans/tame; Pillow bilinear resizing analogous to CG medium, not a measured screenshot color",
+  "schedule": [
+    {
+      "start": 0,
+      "end": 2.4,
+      "theme": "white",
+      "name": "白"
+    },
+    {
+      "start": 2.4,
+      "end": 5.6,
+      "theme": "system",
+      "name": "默认（跟随系统）"
+    },
+    {
+      "start": 5.6,
+      "end": 6.8,
+      "theme": "black",
+      "name": "黑"
+    },
+    {
+      "start": 6.8,
+      "end": 7.6,
+      "theme": "followCover",
+      "name": "跟随封面"
+    },
+    {
+      "start": 7.6,
+      "end": 8.8,
+      "theme": "midnight",
+      "name": "纯黑夜间"
+    },
+    {
+      "start": 8.8,
+      "end": 10.4,
+      "theme": "mistViolet",
+      "name": "雾紫"
+    },
+    {
+      "start": 10.4,
+      "end": 12.4,
+      "theme": "celadon",
+      "name": "青瓷"
+    },
+    {
+      "start": 12.4,
+      "end": 14,
+      "theme": "duskAmber",
+      "name": "暮橙"
+    },
+    {
+      "start": 14,
+      "end": 15.2,
+      "theme": "deepSea",
+      "name": "深海"
+    },
+    {
+      "start": 15.2,
+      "end": 16.8,
+      "theme": "sakura",
+      "name": "樱粉"
+    },
+    {
+      "start": 16.8,
+      "end": 18.4,
+      "theme": "moss",
+      "name": "苔绿"
+    },
+    {
+      "start": 18.4,
+      "end": 19.6,
+      "theme": "sandGold",
+      "name": "沙金"
+    },
+    {
+      "start": 19.6,
+      "end": 20.8,
+      "theme": "moonGrey",
+      "name": "月白"
+    },
+    {
+      "start": 20.8,
+      "end": 22,
+      "theme": "inkBlue",
+      "name": "黛蓝"
+    },
+    {
+      "start": 22,
+      "end": 23.2,
+      "theme": "rouge",
+      "name": "胭脂"
+    },
+    {
+      "start": 23.2,
+      "end": 24.4,
+      "theme": "aurora",
+      "name": "极光"
+    },
+    {
+      "start": 24.4,
+      "end": 25.4,
+      "theme": "smoke",
+      "name": "烟岚"
+    },
+    {
+      "start": 25.4,
+      "end": 26.4,
+      "theme": "liuli",
+      "name": "琉璃"
+    },
+    {
+      "start": 26.4,
+      "end": 30,
+      "theme": "zhuqing",
+      "name": "朱青"
+    }
+  ]
+}

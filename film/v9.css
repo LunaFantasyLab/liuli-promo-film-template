@@ -1,0 +1,11 @@
+/* v9: separate editorial pages and localized impact, never player layout. */
+#v7-title-stage h1{position:absolute;inset:0;width:1920px;height:1080px;display:block!important;font-weight:650;letter-spacing:-.035em;line-height:1.02;font-optical-sizing:auto}
+.v9-type{position:absolute;display:block;white-space:nowrap;line-height:1.02;transform-origin:0 50%;font-feature-settings:"palt" 1}
+#v8-annoyances .nuisance{width:344px;height:174px;left:-172px;top:-87px;border-width:2px;border-color:#b93646;background:linear-gradient(150deg,#fff9f3,#f8cdc6);box-shadow:0 14px 0 -8px #ab384647,0 32px 58px #48202855}
+#v8-annoyances .noise-top{font-size:16px;background:#a92c40;font-weight:600;letter-spacing:.015em}
+#v8-annoyances .nuisance>strong{font-size:36px;letter-spacing:-.025em;font-weight:700}
+#v8-annoyances .nuisance-detail{font-size:20px;font-weight:550;color:#a4263f}
+#v8-annoyances .escaping-close{background:#ffe7dc;color:#a72b40;width:28px;height:28px;border-radius:50%;text-align:center;line-height:25px;box-shadow:0 2px 6px #591d3730}
+#v8-annoyances .baseball-bat{filter:drop-shadow(0 16px 11px #44271955)}
+.v9-mass-shadow{position:absolute;left:460px;top:790px;width:1000px;height:150px;border-radius:50%;background:#153b3d;filter:blur(52px);pointer-events:none;z-index:2}
+.v9-bin-lid{position:absolute;left:12px;top:21px;width:156px;height:18px;border-radius:50%;background:linear-gradient(#a9bfbc,#31535d);box-shadow:0 8px 10px #0b293955;transform-origin:10% 70%;z-index:4}

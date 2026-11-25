@@ -1,0 +1,1226 @@
+/* v21 — Flagship Apple-Grade Cinema Overhaul for 琉璃 (69.5s)
+   1) Pure-white living prologue (0.00–1.85s) with playful animated folding-fan Liuli logo -> 0.3s silky dissolve
+   2) Full-film 21:9 panoramic cinema player window (1540x660 @ 1.08x) + 21:9 CoverViewer + 21:9 Studio EQ
+   3) Curated distinct 3-block flowing spectrum palettes per chapter with continuous liquid cross-fades (ZERO white flashes!)
+   4) Real bottom control bar -> sleek optical magnifying loupe pulling directly out of control strip (A-B Loop & Speed/Pitch)
+   5) Alive, sculptural 32-band EQ with real-time audio spectrum backlight & 4-stage animated curve choreography
+   6) ZERO album cards behind 「精细调音」; serene nocturnal blue 「享受的时刻 / 不该被打扰」
+   7) Classical full-screen climax relay + pure monochrome B&W TANCO STUDIO end card */
+
+html, body {
+  background: #000000 !important;
+}
+
+/* Lock #main transparent ALWAYS so legacy v7Gradient white washes can NEVER flash between cuts */
+#main {
+  background: transparent !important;
+}
+
+/* Hide all legacy tacky props & patches */
+#v16-lens, #v16-bar, #v16-promo, #v16-aura,
+#v14-minieq, #v14-wave, #v14-shock, #v14-flash, #v14-pitch, #v14-cap,
+#v14-spot, #v14-readout, #v14-frame, #v14-vig, #v14-glow,
+#v14-claim-rule, #v14-claim-blue, #v14-claim-mark, #v14-claim-sub,
+#v8-annoyances, .v9-mass-shadow, #stage-brand, #music-layer,
+#headphone-panel {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Never use display:none on #v7-title-stage (per handoff pitfall) */
+#v7-title-stage,
+#v7-title-stage * {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide stray virtual mouse pointer & click ring */
+#cursor,
+#click-ring {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* ============================================================================
+   21:9 CINEMA PLAYER REFINEMENTS (Inside #app 1540x660 logical)
+   Force dark frosted glass on #app, #playbar, and #tabs at all times (never light at 50s!)
+   ============================================================================ */
+#app,
+#app.light {
+  border: none !important;
+  border-radius: 18px !important;
+  --ink: #f5f6fa !important;
+  --ink-soft: rgba(245, 246, 250, 0.65) !important;
+  color: #f5f6fa !important;
+}
+#playbar,
+#app.light #playbar {
+  width: 1400px !important;
+  max-width: calc(100% - 64px) !important;
+  bottom: 18px !important;
+  padding: 7px 18px !important;
+  gap: 16px !important;
+  border: none !important;
+  background: rgba(18, 16, 24, 0.82) !important;
+  color: #f5f6fa !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34) !important;
+  backdrop-filter: blur(28px) saturate(140%) !important;
+}
+#playbar #play,
+#app.light #playbar #play {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+#now-pill,
+#app.light #now-pill {
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  padding: 0 16px !important;
+  background: rgba(0, 0, 0, 0.28) !important;
+  color: #f5f6fa !important;
+}
+#progress-track,
+#app.light #progress-track,
+.volume-track,
+#app.light .volume-track {
+  background: rgba(255, 255, 255, 0.24) !important;
+}
+#progress-track i,
+#app.light #progress-track i,
+.volume-track i,
+#app.light .volume-track i {
+  background: #ffffff !important;
+}
+#volume {
+  width: 224px !important;
+  margin-left: 8px !important;
+}
+.volume-track {
+  width: 116px !important;
+}
+#tabs,
+#app.light #tabs {
+  top: 24px !important;
+  border: none !important;
+  background: rgba(14, 12, 20, 0.56) !important;
+  color: #f5f6fa !important;
+}
+#tabs span.selected,
+#app.light #tabs span.selected {
+  background: rgba(255, 255, 255, 0.20) !important;
+  color: #ffffff !important;
+}
+#theme-button,
+#app.light #theme-button {
+  top: 24px !important;
+  right: 32px !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.10) !important;
+  color: #ffffff !important;
+}
+#carousel {
+  inset: 74px 0 92px !important;
+}
+
+/* Control bar panels (#loop-panel & #speed-panel) — sleek glowing borderless glass directly above #playbar */
+#loop-panel,
+#speed-panel {
+  bottom: 92px !important;
+  border: none !important;
+  background: rgba(18, 16, 24, 0.86) !important;
+  backdrop-filter: blur(28px) saturate(140%) !important;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.14) !important;
+  color: #FFFFFF !important;
+}
+#loop-panel strong,
+#speed-panel strong {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: none !important;
+  color: #FFFFFF !important;
+}
+#loop-panel.v21-hl,
+#speed-panel.v21-hl {
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.56), 0 0 32px rgba(255, 130, 72, 0.36) !important;
+}
+
+/* 21:9 Appreciation Mode & Mini Player polish */
+#appreciation-v7 {
+  border: none !important;
+  border-radius: 22px !important;
+  box-shadow: 0 42px 110px rgba(0, 0, 0, 0.42) !important;
+  overflow: hidden !important;
+}
+#appreciation-v7 .app-close {
+  border: none !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(16px);
+}
+#mini-window {
+  border: none !important;
+  box-shadow: 0 36px 96px rgba(8, 28, 36, 0.34) !important;
+  backdrop-filter: blur(36px) saturate(140%) !important;
+  background: rgba(16, 24, 30, 0.80) !important;
+}
+#mini-window .mini-cover {
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+}
+#mini-window .mini-pin {
+  display: none !important;
+}
+
+.cover-card .cover-art,
+.cover-card .reflection img,
+#now-cover,
+#appreciation-v7 .app-cover,
+#appreciation-v7 .app-frost,
+#mini-window .mini-cover {
+  object-fit: cover !important;
+}
+.cover-card .cover-title,
+.cover-card .cover-artist {
+  opacity: 0.92;
+}
+
+/* Apple TV+ crisp cinema subtitle styling */
+#media-subtitle-v7 {
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 10px 26px !important;
+  background: rgba(8, 8, 12, 0.58) !important;
+  backdrop-filter: blur(18px) !important;
+  color: #FFFFFF !important;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", LiuliSans, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.34) !important;
+}
+
+/* Native macOS video dropdown menu polish */
+#video-menu-v7 {
+  border: none !important;
+  border-radius: 14px !important;
+  background: rgba(22, 18, 26, 0.86) !important;
+  backdrop-filter: blur(28px) saturate(150%) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.48) !important;
+}
+#video-menu-v7 .active {
+  background: linear-gradient(90deg, #E11D74, #FF7A00) !important;
+  color: #FFFFFF !important;
+}
+
+/* ============================================================================
+   V21 PURE-WHITE LIVING LOGO PROLOGUE (0.00–1.85s)
+   Subtle living pearlescent white canvas + playful folding-fan Liuli logo unfurl
+   Hold 1.0s (0.55–1.55s) -> 0.30s silky dissolve (1.55–1.85s) into the live film
+   ============================================================================ */
+#v21-prologue {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 9500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  background: #FFFFFF;
+}
+#v21-prologue .vp-aura1 {
+  position: absolute;
+  width: 2600px;
+  height: 2400px;
+  left: -400px;
+  top: -500px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 226, 206, 0.34) 0%, rgba(255, 240, 232, 0.16) 52%, rgba(255, 255, 255, 0) 100%);
+  will-change: transform;
+}
+#v21-prologue .vp-aura2 {
+  position: absolute;
+  width: 2600px;
+  height: 2400px;
+  right: -460px;
+  bottom: -520px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(226, 236, 255, 0.38) 0%, rgba(242, 246, 255, 0.16) 54%, rgba(255, 255, 255, 0) 100%);
+  will-change: transform;
+}
+#v21-prologue .vp-halo {
+  position: absolute;
+  width: 780px;
+  height: 780px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 92, 24, 0.14) 0%, rgba(255, 160, 80, 0.05) 54%, rgba(255, 255, 255, 0) 100%);
+  will-change: transform, opacity;
+}
+#v21-prologue .vp-logo-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, opacity;
+}
+#v21-prologue .vp-icon-box {
+  position: relative;
+  width: 248px;
+  height: 248px;
+  border-radius: 54px;
+  overflow: hidden;
+  box-shadow: 0 38px 92px rgba(255, 76, 0, 0.24), 0 10px 28px rgba(0, 0, 0, 0.08);
+  will-change: transform, opacity;
+}
+#v21-prologue .vp-icon-box svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#v21-prologue .vp-glint {
+  position: absolute;
+  top: -60px;
+  left: -260px;
+  width: 120px;
+  height: 380px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.62) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(24deg);
+  pointer-events: none;
+}
+#v21-prologue .vp-word {
+  margin-top: 42px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", LiuliSans, sans-serif;
+  font-size: 62px;
+  font-weight: 800;
+  color: #16161A;
+  letter-spacing: 0.28em;
+  padding-left: 0.28em;
+  will-change: transform, opacity;
+}
+
+/* ============================================================================
+   V21 MULTI-CHAPTER LIQUID FLOWING SPECTRUM BACKDROP (3840x2160 native)
+   Silky radial gradients (zero CPU blur crashes!) dynamically colored per chapter!
+   ============================================================================ */
+#v20-bg {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #FF375F;
+}
+#v20-bg .v20-blk {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+#v20-bg .v20-b1 {
+  width: 2880px;
+  height: 3360px;
+  left: 700px;
+  top: -740px;
+}
+#v20-bg .v20-b2 {
+  width: 2780px;
+  height: 2880px;
+  right: -740px;
+  bottom: -740px;
+}
+#v20-bg .v20-b3 {
+  width: 2840px;
+  height: 3140px;
+  left: -720px;
+  top: -580px;
+}
+#v20-bg .v20-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(65% 75% at 24% 38%, rgba(255, 255, 255, 0.14) 0%, transparent 64%);
+}
+#v20-bg .v20-dark-veil {
+  position: absolute;
+  inset: 0;
+  background: #06060A;
+  opacity: 0;
+}
+
+/* Soft music-breathing halo behind real MiniPlayerView */
+#v20-mini-glow {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 2480px;
+  height: 1120px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  display: none;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.56) 0%, rgba(160, 240, 255, 0.28) 38%, rgba(160, 240, 255, 0) 74%);
+  mix-blend-mode: screen;
+}
+
+/* ============================================================================
+   V21 CHAPTER TITLE CARDS (Ultra-Clean Minimalist Typography)
+   - Chapter 01 (沉浸欣赏): Hero layout with spinning Chopin Classical CD
+   - Chapters 02–06: Pure centered monumental Chinese typography
+   ============================================================================ */
+#v20-chapter {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 8800;
+  display: none;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", LiuliSans, sans-serif;
+}
+#v20-chapter .ch-main {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 10;
+}
+#v20-chapter.has-cd .ch-main {
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 260px;
+}
+#v20-chapter .ch-title-mask {
+  overflow: hidden;
+  padding: 0 24px 28px;
+}
+#v20-chapter.has-cd .ch-title-mask {
+  padding: 0 0 28px;
+}
+#v20-chapter .ch-title {
+  font-size: 438px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.042em;
+  line-height: 1.04;
+  -webkit-text-stroke: 5px #FFFFFF;
+  paint-order: stroke fill;
+  text-shadow: 0 42px 120px rgba(0, 0, 0, 0.14);
+}
+#v20-chapter .ch-desc-mask {
+  overflow: hidden;
+  margin-top: 56px;
+}
+#v20-chapter .ch-desc {
+  font-size: 74px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.04em;
+  text-shadow: 0 12px 42px rgba(0, 0, 0, 0.12);
+}
+
+/* Spinning Classical Picture CD (Hero Chapter 01 only, ZERO borders!) */
+#v20-chapter .ch-cd-wrap {
+  position: absolute;
+  right: -540px;
+  top: 50%;
+  margin-top: -924px;
+  width: 1848px;
+  height: 1848px;
+  border-radius: 50%;
+  box-shadow: -84px 102px 260px rgba(0, 0, 0, 0.30);
+  overflow: hidden;
+  z-index: 8;
+  display: none;
+}
+#v20-chapter.has-cd .ch-cd-wrap {
+  display: block;
+}
+#v20-chapter .ch-cd-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+#v20-chapter .ch-cd-disc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.04);
+}
+#v20-chapter .ch-cd-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 35deg, transparent 0deg, rgba(255,255,255,0.22) 26deg, transparent 58deg, rgba(255,255,255,0.06) 150deg, rgba(255,255,255,0.20) 208deg, transparent 245deg, transparent 360deg);
+  mix-blend-mode: screen;
+}
+#v20-chapter .ch-cd-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 462px;
+  height: 462px;
+  margin: -231px 0 0 -231px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.34) 58%, rgba(255,255,255,0.14) 100%);
+  backdrop-filter: blur(26px);
+}
+#v20-chapter .ch-cd-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 198px;
+  height: 198px;
+  margin: -99px 0 0 -99px;
+  border-radius: 50%;
+  background: #FF9500;
+  box-shadow: inset 0 12px 38px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================================================
+   V21 CONTROL-BAR OPTICAL MAGNIFYING LOUPE (19.1–22.1s & 23.2–27.8s)
+   Pulls directly upward out of the LIVE bottom control bar on the 21:9 player!
+   ============================================================================ */
+#v21-loupe-layer {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 8700;
+  display: none;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", LiuliSans, sans-serif;
+}
+#v21-loupe-layer .vl-dim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 62%, rgba(8, 6, 14, 0.22) 0%, rgba(6, 5, 12, 0.66) 72%);
+  opacity: 0;
+}
+/* Optical light beam visually linking the bottom real control bar up to the centered magnified loupe! */
+#v21-loupe-layer .vl-beam {
+  position: absolute;
+  left: 50%;
+  bottom: 356px;
+  width: 2440px;
+  height: 520px;
+  margin-left: -1220px;
+  clip-path: polygon(0% 0%, 100% 0%, 76% 100%, 24% 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 0) 100%);
+  transform-origin: center bottom;
+  opacity: 0;
+}
+#v21-loupe-layer .vl-anchor-ring {
+  display: none !important;
+}
+#v21-loupe-layer .vl-card {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 2560px;
+  padding: 70px 96px;
+  border-radius: 92px;
+  background: rgba(16, 14, 24, 0.90);
+  backdrop-filter: blur(64px) saturate(160%);
+  box-shadow:
+    0 96px 260px rgba(0, 0, 0, 0.66),
+    inset 0 2px 0 rgba(255, 255, 255, 0.26),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.08);
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+}
+#v21-loupe-layer .vl-accent-bar {
+  position: absolute;
+  inset: 0;
+  border-radius: 92px;
+  opacity: 0.24;
+  pointer-events: none;
+}
+#v21-loupe-layer .vl-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+#v21-loupe-layer .vl-title {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 46px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+}
+#v21-loupe-layer .vl-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FF6B4A;
+  box-shadow: 0 0 26px currentColor;
+}
+#v21-loupe-layer .vl-status {
+  padding: 16px 40px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 36px;
+  font-weight: 700;
+}
+
+/* Magnified A-B Loop real control layout */
+#v21-loupe-layer .vl-ab-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+#v21-loupe-layer .vl-ab-box {
+  flex: 1;
+  padding: 40px 54px;
+  border-radius: 54px;
+  background: rgba(255, 255, 255, 0.07);
+  transition: background 0.15s;
+}
+#v21-loupe-layer .vl-ab-box.active {
+  background: linear-gradient(135deg, rgba(217, 30, 91, 0.88), rgba(255, 114, 58, 0.88));
+  box-shadow: 0 36px 96px rgba(255, 77, 77, 0.36);
+}
+#v21-loupe-layer .vl-ab-k {
+  font-size: 34px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.78);
+}
+#v21-loupe-layer .vl-ab-valrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+#v21-loupe-layer .vl-btn {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  font-size: 48px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#v21-loupe-layer .vl-btn.pulse {
+  background: #FFFFFF;
+  color: #16141C;
+  box-shadow: 0 0 42px rgba(255, 255, 255, 0.85);
+  transform: scale(1.12);
+}
+#v21-loupe-layer .vl-num {
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 112px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+}
+#v21-loupe-layer .vl-ab-track {
+  position: relative;
+  height: 36px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-top: 54px;
+  overflow: visible;
+}
+#v21-loupe-layer .vl-ab-span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #FF2D55, #FF7A00, #FFB84D);
+  box-shadow: 0 0 40px rgba(255, 110, 60, 0.55);
+}
+#v21-loupe-layer .vl-ab-handle {
+  position: absolute;
+  top: -14px;
+  width: 24px;
+  height: 64px;
+  margin-left: -12px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+#v21-loupe-layer .vl-ab-head {
+  position: absolute;
+  top: -8px;
+  width: 10px;
+  height: 52px;
+  margin-left: -5px;
+  border-radius: 6px;
+  background: #FFF6D6;
+  box-shadow: 0 0 28px #FFFFFF;
+}
+
+/* Magnified Speed & Pitch real 2-row control strip */
+#v21-loupe-layer .vl-sp-rows {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+#v21-loupe-layer .vl-sp-row {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  padding: 40px 56px;
+  border-radius: 54px;
+  background: rgba(255, 255, 255, 0.06);
+  opacity: 0.52;
+}
+#v21-loupe-layer .vl-sp-row.active {
+  background: linear-gradient(135deg, rgba(91, 46, 255, 0.90), rgba(56, 189, 248, 0.82));
+  box-shadow: 0 36px 96px rgba(91, 46, 255, 0.42);
+  opacity: 1;
+}
+#v21-loupe-layer .vl-sp-lbl {
+  width: 220px;
+  font-size: 46px;
+  font-weight: 800;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+#v21-loupe-layer .vl-sp-val {
+  width: 420px;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 86px;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+#v21-loupe-layer .vl-sp-slider {
+  flex: 1;
+  position: relative;
+  height: 22px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.24);
+}
+#v21-loupe-layer .vl-sp-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 99px;
+  background: #FFFFFF;
+}
+#v21-loupe-layer .vl-sp-thumb {
+  position: absolute;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin-left: -28px;
+  margin-top: -28px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 42px rgba(255, 255, 255, 0.92);
+}
+
+/* ============================================================================
+   V21 ALIVE 21:9 32-BAND STUDIO EQ (28.80–37.00s)
+   Wider 1320px console + live audio spectrum backlight + glowing multi-color spline
+   ============================================================================ */
+#app.v20-eq-mode {
+  background: rgba(8, 12, 18, 0.88) !important;
+  border: none !important;
+  box-shadow: 0 44px 128px rgba(0, 0, 0, 0.62) !important;
+}
+#app.v20-eq-mode #ambient,
+#app.v20-eq-mode #vignette,
+#app.v20-eq-mode #carousel {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+#app.v20-eq-mode #eq-panel {
+  width: min(1360px, calc(100% - 88px)) !important;
+  height: 470px !important;
+  top: 47% !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#app.v20-eq-mode #fader-area {
+  top: 118px !important;
+  height: 294px !important;
+}
+#app.v20-eq-mode #eq-panel header {
+  border-bottom: none !important;
+}
+#app.v20-eq-mode #curve-line {
+  stroke: #38BDF8 !important;
+  stroke-width: 2.8px !important;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.85));
+}
+#app.v20-eq-mode #eq-toggle.on {
+  background: linear-gradient(90deg, #0EA5E9, #2DD4BF) !important;
+}
+#app.v20-eq-mode #presets span {
+  border: none !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+#app.v20-eq-mode #presets span.v21-eq-active,
+#app.v20-eq-mode #band-count span.active {
+  background: linear-gradient(90deg, #0EA5E9, #2DD4BF) !important;
+  color: #06141F !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(45, 212, 191, 0.42);
+}
+
+/* Real-time live audio spectrum columns gently breathing behind the 32 faders */
+#v21-eq-spec {
+  position: absolute;
+  left: 86px;
+  right: 24px;
+  top: 32px;
+  bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+#v21-eq-spec i {
+  display: block;
+  flex: 1;
+  height: 20%;
+  border-radius: 6px 6px 2px 2px;
+  opacity: 0.24;
+  will-change: height;
+}
+#v21-eq-pill {
+  position: absolute;
+  z-index: 25;
+  display: none;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #08121C;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 8px 24px rgba(45, 212, 191, 0.45);
+  transform: translate(-50%, -135%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   V21 DARK-CINEMA PROMO REEL INSIDE REAL 21:9 VIDEO STAGE (38.0–51.4s)
+   ============================================================================ */
+#original-video-stage.v20-vid-on {
+  background: #08070B !important;
+}
+#original-video-stage #video-back {
+  z-index: 12 !important;
+}
+#v20-promo {
+  position: absolute;
+  z-index: 2;
+  display: none;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #100C14;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.55);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", LiuliSans, sans-serif;
+}
+#v20-promo .vp-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+#v20-promo .vp-s1 {
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(225, 29, 116, 0.36) 0%, transparent 56%),
+    radial-gradient(ellipse at 82% 76%, rgba(255, 158, 44, 0.30) 0%, transparent 58%),
+    linear-gradient(155deg, #170C14 0%, #0D0B12 100%);
+}
+#v20-promo .vp-s2 {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 122, 0, 0.28) 0%, rgba(225, 29, 116, 0.16) 44%, transparent 72%),
+    linear-gradient(160deg, #120B10 0%, #09080D 100%);
+}
+#v20-promo .vp-s3 {
+  background:
+    radial-gradient(ellipse at 72% 30%, rgba(255, 196, 46, 0.26) 0%, transparent 52%),
+    radial-gradient(ellipse at 24% 72%, rgba(225, 29, 116, 0.32) 0%, transparent 56%),
+    linear-gradient(150deg, #150C12 0%, #0B0A10 100%);
+}
+#v20-promo .vp-s4 {
+  background:
+    radial-gradient(ellipse at 50% 44%, rgba(255, 102, 24, 0.34) 0%, rgba(225, 29, 116, 0.16) 44%, transparent 72%),
+    linear-gradient(160deg, #140B10 0%, #08070B 100%);
+}
+#v20-promo .vp-fan {
+  position: relative;
+  width: 680px;
+  height: 295px;
+}
+#v20-promo .vp-fan img {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 248px;
+  height: 248px;
+  margin-left: -124px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.62);
+}
+#v20-promo .vp-cap {
+  margin-top: 14px;
+  font-size: 34px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+#v20-promo .vp-mini-demo {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 34px 18px 18px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(28px);
+  box-shadow: 0 32px 84px rgba(0, 0, 0, 0.46);
+}
+#v20-promo .vp-mini-demo img {
+  width: 110px;
+  height: 110px;
+  border-radius: 18px;
+  object-fit: cover;
+}
+#v20-promo .vp-mini-t {
+  font-size: 30px;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+#v20-promo .vp-mini-s {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.68);
+  margin-top: 6px;
+}
+#v20-promo .vp-brand-lock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#v20-promo .vp-brand-lock img {
+  width: 136px;
+  height: 136px;
+  border-radius: 32px;
+  box-shadow: 0 26px 72px rgba(255, 76, 18, 0.46);
+  margin-bottom: 18px;
+}
+#v20-promo .vp-brand-lock b {
+  font-size: 94px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  -webkit-text-stroke: 1.8px #FFFFFF;
+  paint-order: stroke fill;
+  text-shadow: 0 18px 54px rgba(255, 92, 32, 0.32);
+}
+#v20-promo .vp-brand-lock span {
+  font-size: 20px;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.68);
+  margin-top: 14px;
+}
+
+/* Sleek non-intrusive floating aspect ratio badge */
+#v20-ratio-badge {
+  position: fixed;
+  left: 50%;
+  top: 29.5%;
+  transform: translate(-50%, -50%);
+  z-index: 8600;
+  display: none;
+  pointer-events: none;
+  padding: 14px 42px;
+  border-radius: 999px;
+  background: rgba(14, 12, 18, 0.66);
+  backdrop-filter: blur(32px);
+  color: #FFFFFF;
+  font-family: "SF Mono", Menlo, monospace;
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 24px 68px rgba(0, 0, 0, 0.42);
+}
+
+/* ============================================================================
+   V21 PURE TYPOGRAPHY MANIFESTO (51.40–53.05s) — SERENE NOCTURNAL BLUE
+   Layered seamlessly over #v20-bg's cross-faded Nocturnal Blue palette!
+   ============================================================================ */
+#v20-manifesto {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 9000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", LiuliSans, sans-serif;
+}
+#v20-manifesto .vm-main {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 28px;
+}
+#v20-manifesto .vm-line-mask {
+  overflow: hidden;
+  padding: 0 36px 24px;
+}
+#v20-manifesto .vm-line {
+  font-size: 368px;
+  font-weight: 900;
+  color: #F4F8FF;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  -webkit-text-stroke: 4.5px #F4F8FF;
+  paint-order: stroke fill;
+  text-shadow: 0 28px 96px rgba(3, 10, 28, 0.42), 0 0 56px rgba(130, 186, 255, 0.14);
+}
+
+/* ============================================================================
+   V22 9 BORDERLESS AD CARDS + 4K BASEBALL BAT FLOURISH & TRASH CAN SLAM (51.95–57.60s)
+   ============================================================================ */
+#v20-ads-stage {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 8900;
+  display: none;
+  background: radial-gradient(ellipse at 54% 48%, #16101C 0%, #09070D 58%, #040306 100%);
+  overflow: hidden;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", LiuliSans, sans-serif;
+}
+#v20-ads-stage .va-camera {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+#v20-ads-stage .va-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 48% 52%, rgba(255, 65, 54, 0.18) 0%, rgba(255, 140, 0, 0.10) 42%, transparent 74%);
+}
+#v20-ads-stage .va-card {
+  position: absolute;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  z-index: 20;
+}
+
+/* Heavy Brushed-Steel 4K Trash Can (.va-bin) */
+#v20-ads-stage .va-bin {
+  position: absolute;
+  left: 2940px;
+  top: 1120px;
+  width: 620px;
+  height: 760px;
+  transform-origin: 50% 88%;
+  z-index: 45;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+#v20-ads-stage .va-bin-body {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 64px 140px rgba(0, 0, 0, 0.78));
+}
+#v20-ads-stage .va-bin-junk {
+  position: absolute;
+  left: 110px;
+  top: 56px;
+  width: 400px;
+  height: 112px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  z-index: 48;
+  opacity: 0;
+  border-radius: 0 0 180px 180px / 0 0 44px 44px;
+  transform-origin: 50% 100%;
+}
+#v20-ads-stage .va-bin-junk i {
+  display: block;
+  width: 76px;
+  height: 68px;
+  border-radius: 14px;
+  box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.55);
+}
+#v20-ads-stage .va-bin-lid {
+  position: absolute;
+  left: 44px;
+  top: 70px;
+  width: 532px;
+  height: 160px;
+  transform-origin: 88% 75%;
+  z-index: 54;
+  opacity: 0;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.65));
+}
+
+/* 4K Hardwood Baseball Bat (.va-bat) + Motion Blur Ghosts */
+#v20-ads-stage .va-bat-wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3840px;
+  height: 2160px;
+  pointer-events: none;
+  z-index: 65;
+}
+#v20-ads-stage .va-bat,
+#v20-ads-stage .va-bat-ghost {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1580px;
+  height: 280px;
+  transform-origin: 155px 140px;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+#v20-ads-stage .va-bat {
+  filter: drop-shadow(0 44px 96px rgba(0, 0, 0, 0.72));
+  z-index: 68;
+}
+#v20-ads-stage .va-bat-ghost {
+  filter: blur(8px) brightness(1.25);
+  mix-blend-mode: screen;
+  z-index: 66;
+}
+
+/* Kinetic Mid-Air Flourish Trail & Supersonic Swing Arc */
+#v20-ads-stage .va-swing-fx {
+  position: absolute;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  pointer-events: none;
+  z-index: 62;
+}
+#v20-ads-stage .va-hit-flare {
+  position: absolute;
+  left: 1560px;
+  top: 980px;
+  width: 980px;
+  height: 980px;
+  margin-left: -490px;
+  margin-top: -490px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFFFFF 0%, #FFF3B0 24%, rgba(255, 140, 24, 0.78) 48%, rgba(255, 45, 85, 0) 74%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  z-index: 75;
+}
+#v20-ads-stage .va-hit-ring {
+  position: absolute;
+  left: 1560px;
+  top: 980px;
+  width: 920px;
+  height: 920px;
+  margin-left: -460px;
+  margin-top: -460px;
+  border-radius: 50%;
+  border: none !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0) 48%, rgba(255, 216, 115, 0.62) 64%, rgba(255, 132, 24, 0.28) 72%, rgba(255, 132, 24, 0) 80%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  z-index: 74;
+}
+#v20-ads-stage .va-clean-toast {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  padding: 38px 96px;
+  border-radius: 999px;
+  border: none !important;
+  background: rgba(20, 24, 34, 0.88);
+  backdrop-filter: blur(40px);
+  box-shadow: 0 54px 150px rgba(0, 0, 0, 0.68);
+  color: #FFFFFF;
+  font-size: 88px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 80;
+}
+
+/* ============================================================================
+   V21 PURE MONOCHROME B&W TANCO STUDIO END CARD (64.5–69.5s)
+   ============================================================================ */
+#v20-endcard {
+  position: fixed;
+  inset: 0;
+  width: 3840px;
+  height: 2160px;
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  pointer-events: none;
+}
+#v20-endcard .ve-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial Black", sans-serif;
+  font-size: 186px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  line-height: 1;
+  -webkit-text-stroke: 3.5px #FFFFFF;
+  paint-order: stroke fill;
+}
+#v20-endcard .ve-blackout {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  opacity: 0;
+}

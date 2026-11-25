@@ -1,0 +1,223 @@
+/* v14 restrained motion pass.
+   Visual only. Locked timing (69.5s) and native product structure untouched.
+   Rule: no props, no frames, no flashes. Light, focus and typography carry the motion. */
+
+/* ---- 8s transition: one directional light sweep, no bars ---- */
+#v14-sweep{position:absolute;top:-6%;bottom:-6%;left:0;width:430px;z-index:8;display:none;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.42) 50%,rgba(255,255,255,0) 100%);
+  filter:blur(16px);transform:skewX(-9deg);will-change:transform}
+
+/* ---- eq: spotlight + focus instead of a magnifier lens ---- */
+#v14-spot{position:absolute;width:700px;height:700px;border-radius:50%;z-index:2;display:none;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.13) 0%,rgba(255,255,255,.05) 44%,rgba(255,255,255,0) 72%);
+  mix-blend-mode:screen}
+#bands .fader{will-change:opacity}
+#bands.v14-dim .fader{opacity:.34}
+#bands.v14-dim .fader.v14-focus{opacity:1}
+#bands .fader.v14-focus .slot{background:rgba(255,255,255,.26)}
+#bands .fader.v14-focus .handle{box-shadow:0 0 0 1px rgba(255,255,255,.92),0 0 18px rgba(255,255,255,.5),0 1px 3px #0005}
+#bands .fader.v14-focus label{opacity:1}
+
+/* ---- one small readout, tabular, follows the control ---- */
+#v14-readout{position:absolute;z-index:7;display:none;pointer-events:none;white-space:nowrap;
+  font-size:23px;letter-spacing:.05em;color:#f4f6fa;font-variant-numeric:tabular-nums;
+  text-shadow:0 2px 12px rgba(0,0,0,.42)}
+
+/* ---- synced waveform strip inside the eq panel ---- */
+#v14-wave{position:absolute;left:46px;right:46px;bottom:96px;height:46px;z-index:3;display:none;pointer-events:none;opacity:.5}
+#v14-wave canvas{width:100%;height:100%}
+
+/* ---- ratio: technical measurement frame, no giant numerals ---- */
+#v14-frame{position:absolute;z-index:6;display:none;pointer-events:none;border:1px solid rgba(255,255,255,.34)}
+#v14-frame .c{position:absolute;width:15px;height:15px;border-color:rgba(255,255,255,.62);border-style:solid;border-width:0}
+#v14-frame .c.tl{left:-1px;top:-1px;border-left-width:1px;border-top-width:1px}
+#v14-frame .c.tr{right:-1px;top:-1px;border-right-width:1px;border-top-width:1px}
+#v14-frame .c.bl{left:-1px;bottom:-1px;border-left-width:1px;border-bottom-width:1px}
+#v14-frame .c.br{right:-1px;bottom:-1px;border-right-width:1px;border-bottom-width:1px}
+#v14-ratio{position:absolute;right:12px;bottom:9px;font-size:19px;letter-spacing:.22em;
+  color:rgba(255,255,255,.92);font-variant-numeric:tabular-nums;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+/* ---- mini window background: quiet low-frequency bars ---- */
+#v14-minieq{position:absolute;left:0;right:0;top:300px;height:560px;display:none;z-index:2;pointer-events:none;
+  align-items:center;justify-content:space-between;padding:0 120px;opacity:.15;filter:blur(1.6px)}
+#v14-minieq i{display:block;width:24px;border-radius:7px;
+  background:linear-gradient(to top,rgba(255,255,255,.8),rgba(255,255,255,.12))}
+
+/* ---- nine cards: iPhone frames, one micro-animation per ad ---- */
+#v8-annoyances .nuisance{width:344px;height:174px;left:-172px;top:-87px;border:0;border-radius:34px;
+  padding:6px;overflow:hidden;color:#241a1d;
+  background:linear-gradient(155deg,#23262c 0%,#0b0c0f 44%,#191b20 100%);
+  box-shadow:0 24px 48px -20px rgba(34,12,16,.55),0 2px 6px rgba(34,12,16,.16),
+             inset 0 0 0 1px rgba(255,255,255,.18), inset 0 1px 0 rgba(255,255,255,.35)}
+#v8-annoyances .v14-ph-screen{position:absolute;inset:6px;border-radius:28px;overflow:hidden;padding:0 20px;
+  box-sizing:border-box;display:flex;flex-direction:column;align-items:center;
+  background:linear-gradient(168deg,#fffefd 0%,#fcf1ed 60%,#f7e4dc 100%);
+  box-shadow:inset 0 0 0 1px rgba(60,30,35,.06)}
+#v8-annoyances .v14-ph-island{position:absolute;left:50%;top:15px;transform:translateX(-50%);
+  width:42px;height:10px;border-radius:6px;background:#050607;z-index:5;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+#v8-annoyances .v14-ph-home{position:absolute;left:50%;bottom:13px;transform:translateX(-50%);
+  width:48px;height:3px;border-radius:2px;background:rgba(40,22,26,.22);z-index:5}
+#v8-annoyances .noise-top{position:static;width:100%;padding:34px 0 0;background:none;
+  color:#b03a47;font-size:19px;font-weight:700;letter-spacing:.035em;text-align:center;border-radius:0}
+#v8-annoyances .noise-top b{position:absolute;right:20px;top:36px;font-size:17px;font-weight:600;
+  color:rgba(96,54,60,.34);opacity:1}
+#v8-annoyances .nuisance strong{display:none}
+#v8-annoyances .nuisance-detail{font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.004em;
+  color:#2c1c20;margin-top:12px;max-width:100%;text-align:center}
+#v8-annoyances .escaping-close{display:none}
+#v8-annoyances .nag-progress{bottom:0;height:4px;border-radius:0;background:linear-gradient(90deg,#c45464,#e29a8c)}
+#v8-annoyances .v14-ph-flash{position:absolute;inset:0;background:linear-gradient(200deg,#fff,#ffe9df);
+  opacity:0;z-index:3;pointer-events:none}
+#v8-annoyances .v14-ph-pop{position:absolute;left:26px;right:26px;bottom:-58px;height:50px;border-radius:14px;
+  background:rgba(255,255,255,.97);box-shadow:0 10px 24px rgba(80,30,40,.18);opacity:0;z-index:4}
+#v8-annoyances .v14-ph-pop::before{content:'';position:absolute;left:14px;top:16px;width:76px;height:9px;border-radius:5px;
+  background:rgba(48,30,34,.14)}
+#v8-annoyances .v14-ph-pop::after{content:'';position:absolute;right:14px;top:13px;width:56px;height:24px;border-radius:12px;
+  background:linear-gradient(150deg,#b74a5b,#a63d4d)}
+#v8-annoyances .v14-ph-tick{position:absolute;right:20px;top:52px;padding:6px 14px;border-radius:999px;
+  background:#b03a47;color:#fff;font-size:15px;font-weight:700;letter-spacing:.02em;opacity:0;z-index:4}
+#v8-annoyances .v14-ph-check{position:absolute;right:22px;top:52px;width:26px;height:26px;border-radius:50%;
+  border:2px solid rgba(176,58,71,.55);opacity:0;z-index:4}
+#v8-annoyances .v14-ph-check::after{content:'';position:absolute;left:8px;top:5px;width:6px;height:11px;
+  border-right:2.4px solid #b03a47;border-bottom:2.4px solid #b03a47;transform:rotate(42deg)}
+#v8-annoyances .v14-ph-coin{position:absolute;right:22px;top:52px;width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(150deg,#ffd98a,#d9a04a);box-shadow:inset 0 1px 2px rgba(255,255,255,.75);opacity:0;z-index:4}
+
+/* ---- impact: exposure lift, not a white flash ---- */
+#v14-flash{position:fixed;inset:0;background:#fff;opacity:0;z-index:99998;display:none;pointer-events:none}
+
+/* ---- speed panel: lift the block instead of a lens ---- */
+#speed-panel.v14-mag{transform:translateX(-50%) scale(1.28)!important;z-index:40;
+  box-shadow:0 26px 60px -10px rgba(0,0,0,.4),0 1px 0 rgba(255,255,255,.28) inset}
+
+/* ---- tail: seamless, no border, no stage colour ---- */
+#main.v14-tail{background:transparent!important}
+#v10-stage.v14-stage-off{background:transparent!important}
+
+/* ---- v14 claims + endcard revisions ---- */
+#v91-endcard{background:#f4fafd}
+#v91-endcard svg text{fill:#ffffff!important;stroke:#ffffff!important;stroke-width:12px!important;paint-order:stroke!important;stroke-linejoin:round!important}
+#v14-glow{position:absolute;left:50%;top:47%;width:1900px;height:560px;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.26),rgba(255,255,255,.07) 46%,transparent 72%);
+  filter:blur(46px);mix-blend-mode:screen;transform-origin:50% 50%}
+#v7-title-stage.v14-claim h1{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;position:absolute!important;left:176px!important;top:268px!important;right:auto!important;bottom:auto!important;width:auto!important;height:auto!important;gap:0!important;opacity:1!important;transform:none!important}
+#v7-title-stage.v14-claim h1 > span{position:static!important;display:block!important;inset:auto!important}
+#v7-title-stage.v14-claim h1 span span{display:inline!important;position:static!important}
+
+/* ---- nine ads: each one is its own layout, not one template ---- */
+#v8-annoyances .ad-body{position:absolute;inset:0;border-radius:26px;overflow:hidden;
+  font-family:LiuliSans,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#v8-annoyances .ad-body *{box-sizing:border-box}
+#v8-annoyances .ad-dim{position:absolute;inset:0;background:rgba(38,24,26,.42)}
+#v8-annoyances .ad-btn{display:inline-flex;align-items:center;justify-content:center;
+  height:38px;padding:0 26px;border-radius:19px;background:linear-gradient(160deg,#ff5a52,#e8323a);
+  color:#fff;font-size:16px;font-weight:700;letter-spacing:.02em;box-shadow:0 6px 14px rgba(200,40,50,.28)}
+#v8-annoyances .ad-btn.sm{height:32px;padding:0 18px;border-radius:16px;font-size:14px}
+
+/* 强制更新 */
+#v8-annoyances .ad-upd{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+#v8-annoyances .ad-modal{position:relative;width:238px;padding:16px 18px 14px;border-radius:18px;background:#fff;
+  box-shadow:0 18px 34px rgba(40,16,20,.24);display:flex;flex-direction:column;align-items:center;gap:7px}
+#v8-annoyances .ad-ico{width:34px;height:34px;border-radius:10px;background:linear-gradient(160deg,#ff7a6a,#e8323a);
+  color:#fff;font-size:20px;line-height:34px;text-align:center}
+#v8-annoyances .ad-modal .ad-t{font-size:19px;font-weight:800;color:#241a1d;letter-spacing:-.01em}
+#v8-annoyances .ad-modal .ad-s{font-size:13px;color:#9a6a63}
+#v8-annoyances .ad-modal .ad-s b{color:#d8323c;font-weight:800}
+
+/* 开屏广告 */
+#v8-annoyances .ad-splash{position:relative;width:100%;height:100%;
+  background:linear-gradient(150deg,#ff7a4d 0%,#f5476d 58%,#d92a6a 100%);
+  display:flex;align-items:center;justify-content:center}
+#v8-annoyances .ad-splash .ad-brand{color:#fff;font-size:34px;font-weight:800;letter-spacing:.04em;
+  text-shadow:0 3px 12px rgba(120,10,40,.35)}
+#v8-annoyances .ad-splash .ad-skip{position:absolute;right:12px;top:12px;padding:5px 12px;border-radius:999px;
+  background:rgba(0,0,0,.28);color:#fff;font-size:12px;letter-spacing:.02em;backdrop-filter:blur(3px)}
+#v8-annoyances .ad-splash .ad-splashbar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.28)}
+#v8-annoyances .ad-splash .ad-splashbar i{display:block;height:100%;width:0;background:#fff}
+
+/* 摇一摇 */
+#v8-annoyances .ad-shake{position:relative;width:100%;height:100%;background:linear-gradient(165deg,#fff8f1,#ffe9dc);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+#v8-annoyances .ad-shake .ad-phone{position:relative;width:42px;height:64px;border-radius:9px;border:2.4px solid #e0533f;
+  box-shadow:0 0 0 5px rgba(224,83,63,.10)}
+#v8-annoyances .ad-shake .ad-phone::before{content:'';position:absolute;left:50%;top:6px;transform:translateX(-50%);
+  width:14px;height:3px;border-radius:2px;background:#e0533f}
+#v8-annoyances .ad-shake .ad-arc{position:absolute;top:50%;width:12px;height:44px;border-radius:50%;
+  border:2px solid rgba(224,83,63,.5);border-color:rgba(224,83,63,.5) transparent rgba(224,83,63,.5) transparent}
+#v8-annoyances .ad-shake .ad-arc.l{left:-16px;transform:translateY(-50%)}
+#v8-annoyances .ad-shake .ad-arc.r{right:-16px;transform:translateY(-50%)}
+#v8-annoyances .ad-shake .ad-shake-t{font-size:22px;font-weight:800;color:#2c1c20;letter-spacing:.02em}
+#v8-annoyances .ad-shake .ad-shake-s{font-size:13px;color:#a3705f}
+
+/* 弹窗广告 */
+#v8-annoyances .ad-popup{position:relative;width:100%;height:100%;background:#f6ece6;display:flex;align-items:center;justify-content:center}
+#v8-annoyances .ad-pop{position:relative;width:210px;padding:14px 16px 15px;border-radius:16px;background:#fff;
+  box-shadow:0 16px 30px rgba(40,16,20,.26);display:flex;flex-direction:column;align-items:center;gap:6px}
+#v8-annoyances .ad-x{position:absolute;right:-8px;top:-8px;width:24px;height:24px;border-radius:50%;
+  background:#fff;color:#a63d4d;font-size:15px;line-height:23px;text-align:center;box-shadow:0 2px 6px rgba(40,16,20,.2)}
+#v8-annoyances .ad-pop .ad-t{font-size:18px;font-weight:800;color:#241a1d}
+#v8-annoyances .ad-pop .ad-s{font-size:12px;color:#9a6a63}
+
+/* 借贷 */
+#v8-annoyances .ad-loan{position:relative;width:100%;height:100%;
+  background:linear-gradient(150deg,#141f39 0%,#1c2c50 60%,#25406e 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#v8-annoyances .ad-loan .ad-k{font-size:12px;letter-spacing:.22em;color:rgba(255,255,255,.55)}
+#v8-annoyances .ad-loan .ad-v{font-size:34px;font-weight:800;color:#fff;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#v8-annoyances .ad-loan .ad-s{font-size:12px;color:rgba(255,255,255,.6)}
+#v8-annoyances .ad-loan .ad-b{margin-top:8px;padding:7px 22px;border-radius:999px;
+  background:linear-gradient(160deg,#ffd98a,#e8b45a);color:#3a2408;font-size:14px;font-weight:800}
+
+/* 自动扣费 */
+#v8-annoyances .ad-charge{position:relative;width:100%;height:100%;background:#fffdfb;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:0 18px}
+#v8-annoyances .ad-charge .ad-ch{font-size:12px;letter-spacing:.2em;color:#b08076}
+#v8-annoyances .ad-charge .ad-cv{font-size:36px;font-weight:800;color:#d8323c;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#v8-annoyances .ad-charge .ad-rule{width:100%;border-top:1px dashed rgba(160,110,100,.4);margin:6px 0}
+#v8-annoyances .ad-charge .ad-cr{font-size:12px;color:#8f6a62}
+
+/* 积分套路 */
+#v8-annoyances .ad-points{position:relative;width:100%;height:100%;
+  background:linear-gradient(160deg,#fff4d8,#ffe4b8);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+#v8-annoyances .ad-points .ad-coin{width:44px;height:44px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#fff0bd,#f0b94f 62%,#c98a24);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.8),0 6px 14px rgba(180,120,30,.28);
+  color:#8a5b12;font-size:20px;line-height:44px;text-align:center;font-weight:800}
+#v8-annoyances .ad-points .ad-pt{font-size:19px;font-weight:800;color:#5a3c12}
+#v8-annoyances .ad-points .ad-ps{font-size:12px;color:#9a7b3f}
+
+/* 打卡任务 */
+#v8-annoyances .ad-check{position:relative;width:100%;height:100%;background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+#v8-annoyances .ad-check .ad-ch{font-size:13px;letter-spacing:.16em;color:#a2726b}
+#v8-annoyances .ad-check .ad-days{display:flex;gap:6px}
+#v8-annoyances .ad-check .ad-days i{width:20px;height:20px;border-radius:50%;background:#f2e7e2;
+  color:#c8a9a2;font-size:11px;line-height:20px;text-align:center;font-style:normal}
+#v8-annoyances .ad-check .ad-days i.on{background:linear-gradient(160deg,#7fd6a8,#3fae76);color:#fff}
+#v8-annoyances .ad-check .ad-cs{font-size:13px;color:#8f6a62}
+
+/* 折扣套路 */
+#v8-annoyances .ad-deal{position:relative;width:100%;height:100%;
+  background:linear-gradient(155deg,#ffe6dc,#ffc9bb);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+#v8-annoyances .ad-deal .ad-badge{position:absolute;left:14px;top:14px;padding:3px 10px;border-radius:999px;
+  background:#d8323c;color:#fff;font-size:11px;letter-spacing:.1em}
+#v8-annoyances .ad-deal .ad-dv{display:flex;align-items:baseline;gap:10px}
+#v8-annoyances .ad-deal .ad-old{font-size:20px;color:#a3423f;text-decoration:line-through;text-decoration-thickness:2px}
+#v8-annoyances .ad-deal .ad-new{font-size:38px;font-weight:800;color:#c0242f;letter-spacing:-.02em}
+#v8-annoyances .ad-deal .ad-ds{font-size:12px;color:#a3423f}
+
+/* ---- impact: shock ring, brighter flare, punchier camera ---- */
+#v14-shock{position:fixed;inset:0;pointer-events:none;z-index:99997;display:none}
+#v14-shock .ring{position:absolute;left:50%;top:50%;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;
+  border:7px solid rgba(255,255,255,.72);box-shadow:0 0 32px rgba(255,225,200,.75),inset 0 0 26px rgba(255,210,170,.5);
+  will-change:transform,opacity}
+#v14-shock .ring.two{border-width:3px;border-color:rgba(255,255,255,.5)}
+#v8-annoyances .contact-flare{transform-origin:50% 50%;filter:drop-shadow(0 0 18px rgba(255,220,150,.95))}
+
+#v14-shock .burst{position:absolute;left:50%;top:50%;width:0;height:0;opacity:0}
+#v14-shock .burst i{position:absolute;left:0;top:-3px;width:230px;height:6px;border-radius:3px;
+  background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,0));
+  transform-origin:0 50%}

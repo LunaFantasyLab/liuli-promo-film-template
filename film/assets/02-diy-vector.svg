@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4096 4096" width="4096" height="4096">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f2f3a"/><stop offset="1" stop-color="#3fa3b8"/></linearGradient>
+    <radialGradient id="r" cx=".68" cy=".3" r=".6"><stop offset="0" stop-color="#c8f3ff" stop-opacity=".75"/><stop offset="1" stop-color="#c8f3ff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="4096" height="4096" fill="url(#g)"/>
+  <rect width="4096" height="4096" fill="url(#r)"/>
+  <circle cx="1760" cy="2320" r="1020" fill="none" stroke="#c8f3ff" stroke-opacity=".35" stroke-width="18"/>
+  <circle cx="1760" cy="2320" r="640" fill="none" stroke="#c8f3ff" stroke-opacity=".2" stroke-width="10"/>
+  <text x="300" y="3780" font-family="sans-serif" font-size="220" font-weight="600" fill="#c8f3ff" fill-opacity=".7" letter-spacing="24">COVER 02</text>
+</svg>

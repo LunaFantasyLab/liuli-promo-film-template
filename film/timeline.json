@@ -1,0 +1,177 @@
+{
+  "duration": 69.5,
+  "encodedDuration": 69.5,
+  "fps": 60,
+  "frames": 4170,
+  "resolution": [
+    3840,
+    2160
+  ],
+  "segments": [
+    {
+      "type": "intro",
+      "duration": 8,
+      "name": "assemble",
+      "base": 0,
+      "start": 0,
+      "end": 8
+    },
+    {
+      "type": "title",
+      "duration": 1,
+      "name": "沉浸欣赏",
+      "base": 5,
+      "start": 8,
+      "end": 9,
+      "text": "沉浸欣赏"
+    },
+    {
+      "type": "appreciation",
+      "duration": 4.8,
+      "name": "latest-appreciation",
+      "base": 5,
+      "start": 9,
+      "end": 13.8
+    },
+    {
+      "type": "title",
+      "duration": 1,
+      "name": "小窗播放",
+      "base": 25,
+      "start": 13.8,
+      "end": 14.8,
+      "text": "小窗播放"
+    },
+    {
+      "type": "mini",
+      "duration": 3.3,
+      "name": "pinned-mini",
+      "base": 25,
+      "start": 14.8,
+      "end": 18.1
+    },
+    {
+      "type": "title",
+      "duration": 1,
+      "name": "精确选段",
+      "base": 8.06,
+      "start": 18.1,
+      "end": 19.1,
+      "text": "精确选段"
+    },
+    {
+      "type": "ab",
+      "duration": 3,
+      "name": "ab-loop",
+      "base": 8.06,
+      "start": 19.1,
+      "end": 22.1,
+      "a": 8.06,
+      "b": 10.749811320754716,
+      "sourceDuration": 2.5617250673854435
+    },
+    {
+      "type": "title",
+      "duration": 1.1,
+      "name": "变速变调",
+      "base": 11,
+      "start": 22.1,
+      "end": 23.2,
+      "text": "变速变调"
+    },
+    {
+      "type": "speed",
+      "duration": 4.6,
+      "name": "speed-pitch",
+      "base": 11,
+      "start": 23.2,
+      "end": 27.8
+    },
+    {
+      "type": "title",
+      "duration": 1,
+      "name": "精细调音",
+      "base": 15.32,
+      "start": 27.8,
+      "end": 28.8,
+      "text": "精细调音"
+    },
+    {
+      "type": "eq",
+      "duration": 8.2,
+      "name": "equalizer",
+      "base": 15.32,
+      "start": 28.8,
+      "end": 37.0,
+      "a": 15.32,
+      "b": 22.91,
+      "sourceDuration": 7.228571428571428
+    },
+    {
+      "type": "title",
+      "duration": 1,
+      "name": "画面与字幕",
+      "base": 23.5,
+      "start": 37.0,
+      "end": 38.0,
+      "text": "画面与字幕"
+    },
+    {
+      "type": "video",
+      "duration": 13.4,
+      "name": "video-and-themes",
+      "base": 23.5,
+      "start": 38.0,
+      "end": 51.4
+    },
+    {
+      "type": "climax",
+      "duration": 13.1,
+      "name": "nine-nuisances-baseball-to-trash-fullUI",
+      "base": 28,
+      "start": 51.4,
+      "end": 64.5
+    }
+  ],
+  "musicPending": true,
+  "musicBpm": null,
+  "musicRequestedDrumPulse": 248.4,
+  "musicRequestedHalfTime": 124.2,
+  "actionSpeedRelativeV7": 0.9,
+  "themeRelayStart": 46.4,
+  "themeRelayEnd": 51.4,
+  "climaxStart": 51.4,
+  "batContact": 56.65,
+  "allInTrash": 58.15,
+  "trashHold": [
+    58.15,
+    58.65
+  ],
+  "productFallStart": 58.65,
+  "productImpact": 59.6,
+  "postImpactMotion": [
+    59.6,
+    64
+  ],
+  "zoomFade": [
+    64,
+    64.5
+  ],
+  "titleDirectToTarget": true,
+  "openingAssemblySeconds": 8,
+  "endcard": {
+    "start": 64.5,
+    "fullyVisible": 65.5,
+    "end": 69.5,
+    "text": "TANCO STUDIO",
+    "selected": "option02 native gradient rebuild",
+    "fullTextHold": [
+      65.5,
+      69
+    ],
+    "fadeOut": [
+      69,
+      69.5
+    ]
+  }
+}
